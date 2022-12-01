@@ -10,7 +10,8 @@ public enum CsvHeader {
 	SIZE("Size (byte)"),
 	EXTENSION("Extension"),
 	CREATION_DATE("Creation Date"),
-	LAST_MODIFIED_DATE("Last Modified Date");
+	LAST_MODIFIED_DATE("Last Modified Date"),
+	STATUS("Status");
 
 	public final String label;
 

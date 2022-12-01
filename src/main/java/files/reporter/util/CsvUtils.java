@@ -24,6 +24,11 @@ public class CsvUtils {
 		throw new UnsupportedOperationException(GenericMessages.NO_CONSTRUCTOR.label);
 	}
 
+	/**
+	 * 
+	 * @param fileDtoList contains the information related to all processed files
+	 * @param currentFolder is the folder where the report file (report.csv) is created
+	 */
 	public static void createCSVFile(Set<FileDto> fileDtoList, String currentFolder) {
 		Set<Object[]> data = fileDtoList.stream().map(FileDto::toReadableFileDto).collect(Collectors.toSet());
 		File reportFile = Paths.get(currentFolder, GenericMessages.REPORT_FILE_NAME.label).toFile();

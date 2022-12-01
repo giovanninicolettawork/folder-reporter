@@ -1,24 +1,24 @@
 package files.reporter.dto;
 
 public class FileDto {
-	
+
 	private String name;
-	
+
 	private String parentFolder;
-	
+
 	private String sizeInByte;
-	
+
 	private String extension;
-	
+
 	private String creationDate;
-	
+
 	private String lastModifiedDate;
-	
+
 	private String status;
-	
+
 	public static Object[] toReadableFileDto(FileDto f) {
-		return new Object[] { f.getName(), f.getParentFolder(), f.getSizeInByte(), f.getExtension()
-				, f.getCreationDate(), f.getLastModifiedDate()};
+		return new Object[] { f.getName(), f.getParentFolder(), f.getSizeInByte(), f.getExtension(),
+				f.getCreationDate(), f.getLastModifiedDate(), f.getStatus() };
 	}
 
 	public String getName() {
@@ -76,9 +76,5 @@ public class FileDto {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
-	
-	
 
 }

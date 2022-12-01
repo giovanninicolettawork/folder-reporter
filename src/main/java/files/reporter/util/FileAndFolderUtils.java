@@ -29,26 +29,27 @@ public class FileAndFolderUtils {
 		throw new UnsupportedOperationException(GenericMessages.NO_CONSTRUCTOR.label);
 	}
 
-	public static boolean setInitialFileNames(StringBuilder currentJarFileName, StringBuilder currentFolderName) {
-
+	/**
+	 * Get the running jar location
+	 * @return The ful Path of the file, including the file name
+	 */
+	public static Path getCurrentJarFullLocation() {
 		Path path = null;
 		try {
 			path = Paths.get(App.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 		} catch (URISyntaxException e) {
 			logger.log(Level.SEVERE,
 					String.format("An error occurred in the determination of the path: %s", e.getMessage()));
-			return Boolean.FALSE;
 		}
-		if (path != null) {
-			currentJarFileName.append(path.getFileName().toString());
-			currentFolderName.append(path.getParent().toAbsolutePath().toString());
-			return Boolean.TRUE;
-		}
-		logger.log(Level.SEVERE, "An error occurred in the determination of the path (path is NULL)");
-		return Boolean.FALSE;
-
+		return path;
 	}
 
+	/**
+	 * Get all the files in the specified folder, excluding the running jar and folders
+	 * @param currentFolderName is the folder to be processed
+	 * @param currentJarFileName is the running jar file
+	 * @return the Set of FileDto in the specified folder
+	 */
 	public static Set<FileDto> listFilesInFolder(String currentFolderName, String currentJarFileName) {
 		try (Stream<Path> stream = Files.list(Paths.get(currentFolderName))) {
 			return stream.filter(
@@ -81,6 +82,5 @@ public class FileAndFolderUtils {
 		return fileDto;
 
 	}
-
 
 }

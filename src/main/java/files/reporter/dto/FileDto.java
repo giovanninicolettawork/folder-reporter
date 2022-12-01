@@ -10,11 +10,16 @@ public class FileDto {
 	
 	private String extension;
 	
-	private String lastModifiedDate;
-	
 	private String creationDate;
 	
+	private String lastModifiedDate;
+	
 	private String status;
+	
+	public static Object[] toReadableFileDto(FileDto f) {
+		return new Object[] { f.getName(), f.getParentFolder(), f.getSizeInByte(), f.getExtension()
+				, f.getCreationDate(), f.getLastModifiedDate()};
+	}
 
 	public String getName() {
 		return name;

@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -23,21 +24,20 @@ public class CsvUtils {
 		throw new UnsupportedOperationException(GenericMessages.NO_CONSTRUCTOR.label);
 	}
 
-
-
-	public static void createCSVFile(Set<FileDto> data, String currentFolder) {
+	public static void createCSVFile(Set<FileDto> fileDtoList, String currentFolder) {
+		Set<Object[]> data = fileDtoList.stream().map(FileDto::toReadableFileDto).collect(Collectors.toSet());
 		File reportFile = Paths.get(currentFolder, GenericMessages.REPORT_FILE_NAME.label).toFile();
-		try(FileWriter out = new FileWriter(reportFile)){
-			CSVFormat csvformat = CSVFormat.Builder.create(CSVFormat.DEFAULT).setHeader(CsvHeader.class).build();
+		try (FileWriter out = new FileWriter(reportFile)) {
+			CSVFormat csvformat = CSVFormat.Builder.create(CSVFormat.DEFAULT).setHeader(CsvHeader.getAllHeaders())
+					.build();
 			try (CSVPrinter printer = new CSVPrinter(out, csvformat)) {
 				printer.printRecords(data);
-			} 	
-		}catch (Exception e) {
+			}
+		} catch (Exception e) {
 			logger.log(Level.SEVERE,
 					String.format("An error occurred in the generation of the report: %s", e.getMessage()));
 			FileUtils.deleteQuietly(reportFile);
 		}
-
 	}
 
 }

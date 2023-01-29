@@ -25,6 +25,7 @@ public class CsvUtils {
 	}
 
 	/**
+	 * Generate report csv file
 	 * 
 	 * @param fileDtoList contains the information related to all processed files
 	 * @param currentFolder is the folder where the report file (report.csv) is created

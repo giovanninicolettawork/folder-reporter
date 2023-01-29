@@ -25,7 +25,7 @@ public class App {
 		if (jarLocation == null) {
 			return;
 		}
-		logger.log(Level.INFO, "File List Configuration");
+		logger.log(Level.INFO, "File List Configuration for {0}", jarLocation);
 		Set<FileDto> allFileInCurrentFolder = FileAndFolderUtils.listFilesInFolder(
 				jarLocation.getParent().toAbsolutePath().toString(), jarLocation.getFileName().toString());
 		CsvUtils.createCSVFile(allFileInCurrentFolder, jarLocation.getParent().toAbsolutePath().toString());

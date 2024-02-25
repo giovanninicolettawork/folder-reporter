@@ -9,5 +9,6 @@ jobs:
     steps:
     - name: Print Hello World
       run: |
-        response=$(curl -s https://reqres.in/api/users/2)
-        echo '### The response is 🚀' + "$response" >> $GITHUB_STEP_SUMMARY
+        response=$(curl -s https://reqres.in/api/users/2 | jq -r '.data | "- \(.id): \(.email)"')
+        echo '### The response is 🚀' >> $GITHUB_STEP_SUMMARY
+        echo "$response" >> $GITHUB_STEP_SUMMARY

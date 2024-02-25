@@ -8,4 +8,6 @@ jobs:
 
     steps:
     - name: Print Hello World
-      run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
+      run: |
+        response=$(curl -s https://example.com)  # Replace https://example.com with your desired URL
+        echo "$response" >> $GITHUB_STEP_SUMMARY

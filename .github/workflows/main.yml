@@ -9,5 +9,5 @@ jobs:
     steps:
     - name: Print Hello World
       run: |
-        response=$(curl -s https://example.com)  # Replace https://example.com with your desired URL
+        response=$(curl -s https://reqres.in/api/users/2)
         echo "$response" >> $GITHUB_STEP_SUMMARY

@@ -1,3 +1,10 @@
-steps:
-  - name: Adding markdown
-    run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
+name: Hello World
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Hello World
+      run: echo "Hello, World!"

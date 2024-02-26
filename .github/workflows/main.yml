@@ -10,5 +10,5 @@ jobs:
     - name: Print Hello World
       run: |
         response=$(curl -s https://reqres.in/api/users/2 | jq -r '.data | "- id: \(.id), email: \(.email)"')
-        echo '### The response is 🚀' >> $GITHUB_STEP_SUMMARY
+        echo '### The Response is 🚀' >> $GITHUB_STEP_SUMMARY
         echo "$response" >> $GITHUB_STEP_SUMMARY

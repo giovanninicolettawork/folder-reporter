@@ -1,8 +1,0 @@
-name: Test
-on:
-  workflow_dispatch:
-
-jobs:
-  empty_job:
-    runs-on: ubuntu-latest
-    steps:

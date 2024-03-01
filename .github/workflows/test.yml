@@ -6,5 +6,8 @@ jobs:
   empty_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder Step
-        run: echo "This is a placeholder step"
+    - name: Print Test
+      run: |
+        response=$(curl -s https://reqres.in/api/users/2 | jq -r '.data | "- id: \(.id), email: \(.email)"')
+        echo '### The response fo Test is 🚀' >> $GITHUB_STEP_SUMMARY
+        echo "$response" >> $GITHUB_STEP_SUMMARY

@@ -15,4 +15,3 @@ jobs:
     - name: Print Hello World
       run: |
         echo $test
-        echo format(env.test,inputs.input_1)

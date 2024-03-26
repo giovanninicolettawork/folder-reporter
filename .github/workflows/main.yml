@@ -16,4 +16,4 @@ jobs:
       run: |
         echo $test
         echo "${{env.test}}${{inputs.input_1}}" > test
-        echo "$test
+        echo "$test"

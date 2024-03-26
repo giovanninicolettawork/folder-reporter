@@ -15,4 +15,4 @@ jobs:
     - name: Print Hello World
       run: |
         echo $test
-        echo "$test + inputs.input_1"
+        echo "${{{test}} + ${{inputs.input_1}}"

@@ -15,5 +15,5 @@ jobs:
     - name: Print Hello World
       run: |
         echo $test
-        echo "${{env.test}}${{inputs.input_1}}" > test
+        echo "${{format('{0}{1}), env.test, inputs.input_1}}" > test
         echo "$test"
